@@ -1,3 +1,5 @@
+const Activity = require('./activity')
+
 class Instructor {
   #basicSalary
   ledActivities = []
@@ -10,16 +12,11 @@ class Instructor {
     return this.#basicSalary
   }
 
-  lead (...activities) {
-    activities.forEach(activity => {
-      if (activity && activity.constructor.name === 'Activity') {
-        // Solo agrega si no está ya liderada
-        if (!this.ledActivities.includes(activity)) {
-          this.ledActivities.push(activity) // Agrega la actividad al instructor
-          activity.ledBy(this) // Asigna el instructor a la actividad
-        }
-      }
-    })
+  lead (activity) {
+    if (activity instanceof Activity) {
+      this.ledActivities.push(activity)
+      activity.ledBy(this)
+    }
   }
 }
 
