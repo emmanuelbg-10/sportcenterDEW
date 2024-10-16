@@ -14,9 +14,8 @@ class Activity extends Service {
     return this.#instructor
   }
 
-  // Verificar si el argumento tiene una propiedad 'ledActivities'
-  ledBy (elInstructor) {
-    this.#instructor = elInstructor
+  ledBy (instructor) {
+    this.#instructor = instructor
   }
 
   calculateCost () {

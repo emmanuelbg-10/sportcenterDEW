@@ -2,14 +2,19 @@ const Activity = require('./activity')
 
 class Instructor {
   #basicSalary
-  ledActivities = []
   constructor (name, basicSalary = 500) {
     this.name = name
+    this.ledActivities = []
     this.#basicSalary = basicSalary
   }
 
   get salary () {
-    return this.#basicSalary
+    let total = this.#basicSalary
+    this.ledActivities.forEach(element => {
+      total += element.assistance * 5 + 100
+    })
+
+    return total
   }
 
   lead (activity) {
